@@ -11,7 +11,15 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
+import java.io.*;
+import java.net.URL;
+import javax.sound.sampled.*;
+import javax.swing.*;
+
+
 public class Field extends Application{
+
+
 
     /**
      * Distance in pixels that the alien moves when a key is pressed.
@@ -50,7 +58,14 @@ public class Field extends Application{
         primaryStage.setScene(scene);
 
         primaryStage.show();
+
+
+
     }
+
+
+
+
 
     /**
      * Modifies the position of the image view when an arrow key is pressed.
@@ -68,13 +83,21 @@ public class Field extends Application{
         }
     }
 
+
+
+
     /**
      * Launches the JavaFX application.
      *
      * @param args command line arguments
      */
     public static void main(final String[] args) {
+        SoundClipTest music = new SoundClipTest();
+        music.playSong();
+
+
         launch(args);
+
     }
 
 }
