@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -27,18 +27,20 @@ public class Field extends Application{
      * @param primaryStage a Stage
      */
     public void start(final Stage primaryStage) {
+
         Image alien = new Image("char1.png", true);
         imageView = new ImageView(alien);
 
-        final int player = 20;
-        imageView.setX(player);
-        imageView.setY(player);
+        ImageView iv = new ImageView("field.png");
+//        final int player = 1000;
+        imageView.setX(280);
+        imageView.setY(736);
 
-        Group root = new Group(imageView);
+        Group root = new Group(iv);
+        root.getChildren().add(imageView);
 
-
-        final int appWidth = 600;
-        final int appHeight = 600;
+        final int appWidth = 640;
+        final int appHeight = 800;
         Scene scene = new Scene(root, appWidth, appHeight, Color.BLACK);
 
         // Register the key listener here
@@ -46,6 +48,7 @@ public class Field extends Application{
 
         primaryStage.setTitle("AlienDirection");
         primaryStage.setScene(scene);
+
         primaryStage.show();
     }
 
