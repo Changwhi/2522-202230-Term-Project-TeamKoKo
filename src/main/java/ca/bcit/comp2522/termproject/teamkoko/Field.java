@@ -6,27 +6,21 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-
-import java.io.*;
-import java.net.URL;
-import javax.sound.sampled.*;
-import javax.swing.*;
-
-
-public class Field extends Application{
-
-
-
+/**
+ * Filed that can move around and play game.
+ * @author Jesper and Changwhi Oh
+ * @version 1.0.0
+ */
+public class Field extends Application {
     /**
-     * Distance in pixels that the alien moves when a key is pressed.
+     * Distance in pixels that the character moves when a key is pressed.
      */
     public static final int JUMP = 10;
 
-    // Contains the image of the alien
+    // Contains the image of the character
     private ImageView imageView;
 
     /**
@@ -58,9 +52,6 @@ public class Field extends Application{
         primaryStage.setScene(scene);
 
         primaryStage.show();
-
-
-
     }
 
 
@@ -84,17 +75,14 @@ public class Field extends Application{
     }
 
 
-
-
     /**
      * Launches the JavaFX application.
      *
      * @param args command line arguments
      */
     public static void main(final String[] args) {
-        SoundClipTest music = new SoundClipTest();
-        music.playSong();
-
+        SoundClipTest music = new SoundClipTest(); //test music
+        music.playSong(); // test music
 
         launch(args);
 
