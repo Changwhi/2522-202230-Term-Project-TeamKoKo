@@ -1,23 +1,29 @@
 package ca.bcit.comp2522.termproject.teamkoko;
 
+import javafx.scene.layout.Pane;
+
 /**
  * Abstract class that defines Characters.
  * @author Jesper and Changwhi Oh
  * @version 1.0.0
  */
-public abstract class Player {
+public abstract class Player extends Pane {
 
-    private int pointX;
-    private int pointY;
-    private boolean arrive;
-    private boolean win;
+    protected int width;
+    protected int height;
+    int pointX;
+    int pointY;
+    protected boolean arrive;
+    protected boolean win;
 
     /**
      * A default constructor.
      */
-    public Player() {
-        this.pointX = 0;
-        this.pointY = 0;
+    public Player(final int width, final int height, final int pointX, final int pointY) {
+        this.width = width;
+        this.height = height;
+        this.pointX = pointX;
+        this.pointY = pointY;
         this.arrive = false;
         this.win = false;
     }
