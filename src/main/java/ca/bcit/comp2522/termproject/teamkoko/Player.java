@@ -17,7 +17,11 @@ public abstract class Player extends Pane {
     protected boolean win;
 
     /**
-     * A default constructor.
+     * Constructs a Player object.
+     * @param width width of this character in pixel
+     * @param height height of this character in pixel
+     * @param pointX X coordinate of offset in Imageview(Starts from left top)
+     * @param pointY Y coordinate of offset in Imageview(Starts from left top)
      */
     public Player(final int width, final int height, final int pointX, final int pointY) {
         this.width = width;
