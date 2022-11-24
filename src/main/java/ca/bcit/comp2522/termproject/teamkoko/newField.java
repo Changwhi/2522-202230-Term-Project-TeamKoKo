@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  * @author Jesper and Changwhi Oh
  * @version 1.0.0
  */
-public class newField extends Application {
+public class NewField extends Application {
     /**
      * Distance in pixels that the character moves when a key is pressed.
      */
