@@ -26,12 +26,9 @@ public class NewField extends Application {
      * Distance in pixels that the character moves when a key is pressed.
      */
     public static final int JUMP = 10;
-
-
     Image sennaImage = new Image(getClass().getResourceAsStream("/enemy_rear.png"));
     ImageView ivSenna = new ImageView(sennaImage);
     Senna senna = new Senna(40,50,0,0,ivSenna);
-    static Pane root = new Pane();
 
     //Test
     Stage window;
@@ -46,24 +43,32 @@ public class NewField extends Application {
 
         window = primaryStage;
 
-        // label1, button1
+        // labels and buttons
 
-        Label label1 = new Label("JAVA FX Label");
-        Button button1 = new Button("Start");
+        Label label1 = new Label("Start with a Character");
+        Button button1 = new Button("ChulSoo");
+        button1.setOnAction(e->window.setScene(scene2));
+
+        Button button2 = new Button("YoungHee");
+        button1.setOnAction(e->window.setScene(scene2));
+
+        Button button3 = new Button("Senna");
+        button3.setOnAction(e->window.setScene(scene2));
+
+        Label label2 = new Label("Other options");
+        Button button4 = new Button("Road");
+        button1.setOnAction(e->window.setScene(scene2));
+
+        Button button5 = new Button("Quit");
         button1.setOnAction(e->window.setScene(scene2));
 
         // layout1
 
         VBox layout1 = new VBox(20);
-        layout1.getChildren().addAll(label1, button1);
+        layout1.getChildren().addAll(label1, button1, button2, button3,label2 ,button4, button5 );
         scene1 = new Scene(layout1, 300, 300);
 
-        // button 2
-
-        Button button2 = new Button("Go back to Scene 1");
-        button2.setOnAction(e->window.setScene(scene1));
-
-        // layout 2
+        // layout ChulSoo
 
         ImageView iv = new ImageView("field.png");
         Group root2 = new Group(iv);
@@ -73,41 +78,13 @@ public class NewField extends Application {
 
         scene2 = new Scene(root2);
 
+        //
         window.setScene(scene1);
         window.setTitle("Title Here");
         window.show();
 
-
-
-
-
+        //Moves character
         scene2.setOnKeyPressed(this::processKeyPress);
-
-
-//        //Display map
-//        ivSenna.setX(280);
-//        ivSenna.setY(736);
-//
-//        root.setPrefSize(640, 800);
-//        root.getChildren().addAll(senna);
-//
-//
-//
-//
-//        ImageView iv = new ImageView("field.png");
-////
-//        Group root2 = new Group(iv);
-//        root2.getChildren().add(senna);
-//
-//
-//        Scene scene = new Scene(root2);
-//
-//        // Register the key listener here
-//        scene.setOnKeyPressed(this::processKeyPress);
-//
-//        primaryStage.setTitle("AlienDirection");
-//        primaryStage.setScene(scene);
-//        primaryStage.hide();
 
 
     }
