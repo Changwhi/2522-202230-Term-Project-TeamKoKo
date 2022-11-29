@@ -19,7 +19,7 @@ public class TimelineFX extends Application {
     @Override
     public void start(Stage stage) {
 // Create the Text using text object
-        Text text = new Text("Hello Hello!");
+        Text text = new Text("Welcome to SquidGame!");
         VBox root = new VBox(text);
 // Setting the text font size
         text.setFont(Font.font(12));
@@ -28,7 +28,7 @@ public class TimelineFX extends Application {
 // Adding the Scene to the Stage
         stage.setScene(scene);
 // Now Setting the title of the above Stage
-        stage.setTitle("This is stage title");
+        stage.setTitle("SquidGame:GreenLight RedLight");
 // Displaying the Stage using the show() method
         stage.show();
 // Getting the Scene width and the Text width
