@@ -39,6 +39,4 @@ public class ResourceManager {
             return ois.readObject();
         }
     }
-
-
 }
