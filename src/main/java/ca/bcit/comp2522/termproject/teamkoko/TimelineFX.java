@@ -31,5 +31,11 @@ public class TimelineFX extends Application {
         stage.setTitle("This is stage title");
 // Displaying the Stage using the show() method
         stage.show();
+// Getting the Scene width and the Text width
+        double sw = scene.getWidth();
+        double tw = text.getLayoutBounds().getWidth();
+// Defining the Durations of animations
+        Duration startD = Duration.ZERO;
+        Duration endD = Duration.seconds(50);
     }
 }
