@@ -28,5 +28,17 @@ public class ResourceManager {
         }
     }
 
+    /**
+     * Loads the game
+     * @param fileName fileName
+     * @return savefile as Object
+     * @throws Exception
+     */
+    public static Object load(String fileName) throws Exception {
+        try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
+            return ois.readObject();
+        }
+    }
+
 
 }
