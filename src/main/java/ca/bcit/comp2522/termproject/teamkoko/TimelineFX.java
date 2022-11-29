@@ -14,4 +14,11 @@ public class TimelineFX extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    @Override
+    public void start(Stage stage) {
+// Create the Text using text object
+        Text text = new Text("Hello Hello!");
+        VBox root = new VBox(text);
+    }
 }
