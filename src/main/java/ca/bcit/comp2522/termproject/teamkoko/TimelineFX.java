@@ -37,5 +37,11 @@ public class TimelineFX extends Application {
 // Defining the Durations of animations
         Duration startD = Duration.ZERO;
         Duration endD = Duration.seconds(50);
+//Creating the keyFrames to use in timeline
+        KeyValue startValue = new KeyValue(text.translateXProperty(), sw);
+        KeyFrame startFrame = new KeyFrame(startD, startValue);
+        KeyValue endValue = new KeyValue(text.translateXProperty(), -6.0 * tw);
+        KeyFrame endFrame = new KeyFrame(endD, endValue);
     }
+
 }
