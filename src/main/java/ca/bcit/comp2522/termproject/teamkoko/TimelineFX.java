@@ -48,6 +48,8 @@ public class TimelineFX extends Application {
         t1.setCycleCount(t1.INDEFINITE);
 //Setting the auto reverse property of animation
         t1.setAutoReverse(false);
+// Running the animation using play() method
+        t1.play();
 
     }
 
