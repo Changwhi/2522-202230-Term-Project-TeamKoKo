@@ -16,5 +16,17 @@ import java.nio.file.Paths;
 
 public class ResourceManager {
 
+    /**
+     * Saves the game
+     * @param data datafile
+     * @param fileName filename of this save_file
+     * @throws Exception
+     */
+    public static void save(Serializable data, String fileName) throws Exception {
+        try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
+            oos.writeObject(data);
+        }
+    }
+
 
 }
