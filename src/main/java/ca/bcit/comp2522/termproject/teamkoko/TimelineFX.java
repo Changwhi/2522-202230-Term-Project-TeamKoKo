@@ -44,6 +44,11 @@ public class TimelineFX extends Application {
         KeyFrame endFrame = new KeyFrame(endD, endValue);
 // Creating a Timeline using above values
         Timeline t1 = new Timeline(startFrame, endFrame);
+// Setting the cycle count of animation
+        t1.setCycleCount(t1.INDEFINITE);
+//Setting the auto reverse property of animation
+        t1.setAutoReverse(false);
+
     }
 
 }
