@@ -42,6 +42,8 @@ public class TimelineFX extends Application {
         KeyFrame startFrame = new KeyFrame(startD, startValue);
         KeyValue endValue = new KeyValue(text.translateXProperty(), -6.0 * tw);
         KeyFrame endFrame = new KeyFrame(endD, endValue);
+// Creating a Timeline using above values
+        Timeline t1 = new Timeline(startFrame, endFrame);
     }
 
 }
