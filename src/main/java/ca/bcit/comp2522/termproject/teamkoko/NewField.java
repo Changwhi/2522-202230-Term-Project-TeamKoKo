@@ -41,6 +41,10 @@ public class NewField extends Application {
     ChulSoo chulSoo = new ChulSoo(40,50,0,0);
 
 
+    SoundClipTest music = new SoundClipTest(); //test music
+
+
+
 
     static Pane root = new Pane();
 
@@ -62,9 +66,12 @@ public class NewField extends Application {
         if (count % 2 == 0) {
             ivBoss.setImage(bossFront);
             isPlayingSong = false;
+//            music.stopSong();
         } else {
+            music.playSong();
             ivBoss.setImage(bossRear);
             isPlayingSong = true;
+
         }
         count++;
     }
@@ -91,7 +98,7 @@ public class NewField extends Application {
                         Duration.ZERO,
                         e -> incrementLabel()
                 ),
-                new KeyFrame(Duration.seconds(4))
+                new KeyFrame(Duration.seconds(5))
         );
         timeline.setCycleCount(images.size());
         timeline.setOnFinished(event -> timeline.playFromStart());
@@ -134,7 +141,8 @@ public class NewField extends Application {
         // layout lose
         VBox layoutLose = new VBox(20);
         Label labelLose = new Label("You Lose😭");
-        layoutLose.getChildren().addAll(labelLose, buttonGobackTomain);
+        Button buttonGobackTomainLose = new Button("Go to main menu");
+        layoutLose.getChildren().addAll(labelLose, buttonGobackTomainLose);
         buttonGobackTomain.setOnAction(e->window.setScene(scene1));
         sceneLose = new Scene(layoutLose, 150, 150);
 
@@ -177,7 +185,7 @@ public class NewField extends Application {
         window.show();
 
 
-        SetOnKeyPressed chulsooKey = new SetOnKeyPressed(chulSoo.getIvChulSu());
+//        SetOnKeyPressed chulsooKey = new SetOnKeyPressed(chulSoo.getIvChulSu());
 
 
 
@@ -270,6 +278,7 @@ public class NewField extends Application {
             System.out.println(ivSenna.getY());
 
             if (ivSenna.getX() == 280.0 && ivSenna.getY() == 16.0) {
+                music.stopSong();
                 window.setScene(sceneWin);
                 ivSenna.setX(280);
                 ivSenna.setY(736);
@@ -277,6 +286,7 @@ public class NewField extends Application {
 
 
         } else {
+            music.stopSong();
             window.setScene(sceneLose);
         }
     }
@@ -294,8 +304,6 @@ public class NewField extends Application {
      * @param args command line arguments
      */
     public static void main(final String[] args) {
-        SoundClipTest music = new SoundClipTest(); //test music
-        music.playSong(); // test music
 
         launch(args);
 
