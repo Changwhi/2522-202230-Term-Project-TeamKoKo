@@ -17,6 +17,7 @@ import javafx.util.Duration;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Filed that can move around and play game.
@@ -28,7 +29,7 @@ public class NewField extends Application {
      * Distance in pixels that the character moves when a key is pressed.
      */
     public static final int JUMP = 10;
-
+    final Random generator = new Random();
     private boolean isPlayingSong = false;
 
     ImageView ivBoss = new ImageView();
@@ -66,7 +67,6 @@ public class NewField extends Application {
         if (count % 2 == 0) {
             ivBoss.setImage(bossFront);
             isPlayingSong = false;
-//            music.stopSong();
         } else {
             music.playSong();
             ivBoss.setImage(bossRear);
@@ -105,8 +105,8 @@ public class NewField extends Application {
 
 
         imageIterator = images.iterator();
-        timeline.playFromStart();
-        timeline.play();
+//        timeline.playFromStart();
+//        timeline.play();
 
 
 
@@ -120,7 +120,14 @@ public class NewField extends Application {
         Button button3C = new Button("YoungHee");
 
 
-        button1C.setOnAction(e->window.setScene(scene2));
+        button1C.setOnAction(e-> {
+            window.setScene(scene2);
+            timeline.playFromStart();
+            timeline.play();
+        });
+
+
+
         button2C.setOnAction(e->window.setScene(scene3));
 
 
