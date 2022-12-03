@@ -8,17 +8,23 @@ import java.net.URL;
 //extends JFrame
 public class SoundClipTest {
 
-    private Clip clip;
+
 
     public SoundClipTest() {
+
+    }
+
+    public void playSong() {
         try {
             // Open an audio input stream.
-            URL url = this.getClass().getClassLoader().getResource("PinkSoldier.wav");
+            URL url = this.getClass().getClassLoader().getResource("squid.wav");
             AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
             // Get a sound clip resource.
-            clip = AudioSystem.getClip();
+            Clip clip = AudioSystem.getClip();
             // Open audio clip and load samples from the audio input stream.
             clip.open(audioIn);
+            clip.start();
+
 
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
@@ -27,13 +33,10 @@ public class SoundClipTest {
         } catch (LineUnavailableException e) {
             e.printStackTrace();
         }
-    }
 
-    public void playSong() {
-        clip.start();
     }
 
     public void stopSong() {
-        clip.stop();
+//        clip.stop();
     }
 }
