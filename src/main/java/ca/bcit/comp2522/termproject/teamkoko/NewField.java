@@ -35,11 +35,16 @@ public class NewField extends Application {
     Image sennaImage = new Image(getClass().getResourceAsStream("/enemy_rear.png"));
     ImageView ivSenna = new ImageView(sennaImage);
     Senna senna = new Senna(40,50,0,0,ivSenna);
+
+    ChulSoo chulSoo = new ChulSoo(40,50,0,0);
+
+
+
     static Pane root = new Pane();
 
     //Test
     Stage window;
-    Scene scene1, scene2;
+    Scene scene1, scene2, scene3,sceneWin;
 
 
     Image bossFront = new Image(getClass().getResourceAsStream("/enemy_front.png"));
@@ -98,15 +103,31 @@ public class NewField extends Application {
 
         // label1, button1
 
-        Label label1 = new Label("JAVA FX Label");
-        Button button1 = new Button("Start");
-        button1.setOnAction(e->window.setScene(scene2));
+        Label label1 = new Label("Choose your character");
+        Button button1C = new Button("Senna");
+        Button button2C = new Button("Chuulsoo");
+        Button button3C = new Button("YoungHee");
+
+
+        button1C.setOnAction(e->window.setScene(scene2));
+        button2C.setOnAction(e->window.setScene(scene3));
+
 
         // layout1
 
         VBox layout1 = new VBox(20);
-        layout1.getChildren().addAll(label1, button1);
+        layout1.getChildren().addAll(label1, button1C,button2C, button3C);
         scene1 = new Scene(layout1, 300, 300);
+
+        // layout win
+        VBox layoutWin = new VBox(20);
+        Label labelWin = new Label("You Win!!!!!!!!!!!!");
+        Button buttonGobackTomain = new Button("Go to main menu");
+        layoutWin.getChildren().addAll(labelWin, buttonGobackTomain);
+        buttonGobackTomain.setOnAction(e->window.setScene(scene1));
+        sceneWin = new Scene(layoutWin, 150, 150);
+
+
 
         // button 2
 
@@ -115,24 +136,42 @@ public class NewField extends Application {
 
         // layout 2
 
+        // Layout 2 - Senna
         ImageView iv = new ImageView("field.png");
         Group root2 = new Group(iv, ivBoss);
         ivSenna.setX(280);
         ivSenna.setY(736);
         root2.getChildren().add(senna);
 
+        // Layout 2 - Chul Soo
+        ImageView iv2 = new ImageView("field.png");
+        ImageView ivBossForChulsoo = new ImageView();
+        ivBossForChulsoo.setImage(bossFront);
+        Group root3 = new Group(iv2, ivBossForChulsoo);
+        chulSoo.setChulsuX(280);
+        chulSoo.setChulsuY(736);
+        root3.getChildren().add(chulSoo);
+
+        // Layout 2 - YoungHee
+
+
+
         scene2 = new Scene(root2);
+        //when choosing Chulsu
+        scene3 = new Scene(root3);
+
 
         window.setScene(scene1);
         window.setTitle("Title Here");
         window.show();
 
 
+        SetOnKeyPressed chulsooKey = new SetOnKeyPressed(chulSoo.getIvChulSu());
 
 
 
         scene2.setOnKeyPressed(this::processKeyPress);
-
+        scene3.setOnKeyPressed(this::processKeyPress);
 
 //        //Display map
 //        ivSenna.setX(280);
@@ -163,9 +202,7 @@ public class NewField extends Application {
     }
 
 
-
-
-
+//    private boolean isBlock(final KeyEvent event) {
     /**
      * Modifies the position of the image view when an arrow key is pressed.
      *
@@ -173,10 +210,28 @@ public class NewField extends Application {
      */
     public void processKeyPress(final KeyEvent event) {
         switch (event.getCode()) {
-            case UP -> ivSenna.setY(ivSenna.getY() - JUMP);
-            case DOWN -> ivSenna.setY(ivSenna.getY() + JUMP);
-            case RIGHT -> ivSenna.setX(ivSenna.getX() + JUMP);
-            case LEFT -> ivSenna.setX(ivSenna.getX() - JUMP);
+            case UP -> {
+                if (ivSenna.getY() - JUMP >= 0) {
+                    ivSenna.setY(ivSenna.getY() - JUMP);
+                }
+            }
+            case DOWN ->  {
+                if (ivSenna.getY() + JUMP <= 760) {
+                    ivSenna.setY(ivSenna.getY() + JUMP);
+                }
+            }
+
+            case RIGHT -> {
+                if (ivSenna.getX() + JUMP <= 600) {
+                    ivSenna.setX(ivSenna.getX() + JUMP);
+                }
+            }
+
+            case LEFT -> {
+                if (ivSenna.getX() - JUMP >= 0) {
+                    ivSenna.setX(ivSenna.getX() - JUMP);
+                }
+            }
             case S -> {
                 SaveData data = new SaveData();
                 data.posX = ivSenna.getX();
@@ -199,7 +254,22 @@ public class NewField extends Application {
             default -> {
             } // Does nothing if it's not an arrow key
         }
+
+        System.out.println(ivSenna.getX());
+        System.out.println(ivSenna.getY());
+
+        if (ivSenna.getX() == 280.0 && ivSenna.getY() == 16.0) {
+            window.setScene(sceneWin);
+            ivSenna.setX(280);
+            ivSenna.setY(736);
+        }
+
+
     }
+//        if (event.getCode()){
+//
+//        }
+//    }
 
 
     /**
