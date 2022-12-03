@@ -29,6 +29,8 @@ public class NewField extends Application {
      */
     public static final int JUMP = 10;
 
+    private boolean isPlayingSong = false;
+
     ImageView ivBoss = new ImageView();
 
 
@@ -44,7 +46,7 @@ public class NewField extends Application {
 
     //Test
     Stage window;
-    Scene scene1, scene2, scene3,sceneWin;
+    Scene scene1, scene2, scene3,sceneWin,sceneLose;
 
 
     Image bossFront = new Image(getClass().getResourceAsStream("/enemy_front.png"));
@@ -59,8 +61,10 @@ public class NewField extends Application {
     private void incrementLabel() {
         if (count % 2 == 0) {
             ivBoss.setImage(bossFront);
+            isPlayingSong = false;
         } else {
             ivBoss.setImage(bossRear);
+            isPlayingSong = true;
         }
         count++;
     }
@@ -121,11 +125,18 @@ public class NewField extends Application {
 
         // layout win
         VBox layoutWin = new VBox(20);
-        Label labelWin = new Label("You Win!!!!!!!!!!!!");
+        Label labelWin = new Label("You Win🙌");
         Button buttonGobackTomain = new Button("Go to main menu");
         layoutWin.getChildren().addAll(labelWin, buttonGobackTomain);
         buttonGobackTomain.setOnAction(e->window.setScene(scene1));
         sceneWin = new Scene(layoutWin, 150, 150);
+
+        // layout lose
+        VBox layoutLose = new VBox(20);
+        Label labelLose = new Label("You Lose😭");
+        layoutLose.getChildren().addAll(labelLose, buttonGobackTomain);
+        buttonGobackTomain.setOnAction(e->window.setScene(scene1));
+        sceneLose = new Scene(layoutLose, 150, 150);
 
 
 
@@ -209,63 +220,68 @@ public class NewField extends Application {
      * @param event invoked this method
      */
     public void processKeyPress(final KeyEvent event) {
-        switch (event.getCode()) {
-            case UP -> {
-                if (ivSenna.getY() - JUMP >= 0) {
-                    ivSenna.setY(ivSenna.getY() - JUMP);
+        if (isPlayingSong) {
+            switch (event.getCode()) {
+                case UP -> {
+                    if (ivSenna.getY() - JUMP >= 0) {
+                        ivSenna.setY(ivSenna.getY() - JUMP);
+                    }
                 }
+                case DOWN -> {
+                    if (ivSenna.getY() + JUMP <= 760) {
+                        ivSenna.setY(ivSenna.getY() + JUMP);
+                    }
+                }
+
+                case RIGHT -> {
+                    if (ivSenna.getX() + JUMP <= 600) {
+                        ivSenna.setX(ivSenna.getX() + JUMP);
+                    }
+                }
+
+                case LEFT -> {
+                    if (ivSenna.getX() - JUMP >= 0) {
+                        ivSenna.setX(ivSenna.getX() - JUMP);
+                    }
+                }
+                case S -> {
+                    SaveData data = new SaveData();
+                    data.posX = ivSenna.getX();
+                    data.posY = ivSenna.getY();
+                    try {
+                        ResourceManager.save(data, "1.save");
+                    } catch (Exception exc) {
+                        System.out.println("Couldn't save: " + exc.getMessage());
+                    }
+                }
+                case L -> {
+                    try {
+                        SaveData data = (SaveData) ResourceManager.load("1.save");
+                        ivSenna.setX(data.posX);
+                        ivSenna.setY(data.posY);
+                    } catch (Exception exc) {
+                        System.out.println("Couldn't load save data: " + exc.getMessage());
+                    }
+                }
+                default -> {
+                } // Does nothing if it's not an arrow key
             }
-            case DOWN ->  {
-                if (ivSenna.getY() + JUMP <= 760) {
-                    ivSenna.setY(ivSenna.getY() + JUMP);
-                }
+            System.out.println(ivSenna.getX());
+            System.out.println(ivSenna.getY());
+
+            if (ivSenna.getX() == 280.0 && ivSenna.getY() == 16.0) {
+                window.setScene(sceneWin);
+                ivSenna.setX(280);
+                ivSenna.setY(736);
             }
 
-            case RIGHT -> {
-                if (ivSenna.getX() + JUMP <= 600) {
-                    ivSenna.setX(ivSenna.getX() + JUMP);
-                }
-            }
 
-            case LEFT -> {
-                if (ivSenna.getX() - JUMP >= 0) {
-                    ivSenna.setX(ivSenna.getX() - JUMP);
-                }
-            }
-            case S -> {
-                SaveData data = new SaveData();
-                data.posX = ivSenna.getX();
-                data.posY = ivSenna.getY();
-                try {
-                    ResourceManager.save(data, "1.save");
-                } catch (Exception exc) {
-                    System.out.println("Couldn't save: " + exc.getMessage());
-                }
-            }
-            case L -> {
-                try {
-                    SaveData data = (SaveData) ResourceManager.load("1.save");
-                    ivSenna.setX(data.posX);
-                    ivSenna.setY(data.posY);
-                } catch (Exception exc) {
-                    System.out.println("Couldn't load save data: " + exc.getMessage());
-                }
-            }
-            default -> {
-            } // Does nothing if it's not an arrow key
+        } else {
+            window.setScene(sceneLose);
         }
-
-        System.out.println(ivSenna.getX());
-        System.out.println(ivSenna.getY());
-
-        if (ivSenna.getX() == 280.0 && ivSenna.getY() == 16.0) {
-            window.setScene(sceneWin);
-            ivSenna.setX(280);
-            ivSenna.setY(736);
-        }
-
-
     }
+
+
 //        if (event.getCode()){
 //
 //        }
