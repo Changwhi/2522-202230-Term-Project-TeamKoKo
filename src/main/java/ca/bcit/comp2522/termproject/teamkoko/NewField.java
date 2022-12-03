@@ -88,8 +88,8 @@ public class NewField extends Application {
     public void start(Stage primaryStage) {
 
 
-        ivBoss.setX(240);
-        ivBoss.setY(30);
+        ivBoss.setX(280);
+        ivBoss.setY(16);
 
         imageIterator = images.iterator();
 
@@ -284,7 +284,9 @@ public class NewField extends Application {
             System.out.println(ivSenna.getX());
             System.out.println(ivSenna.getY());
 
-            if (ivSenna.getX() == 280.0 && ivSenna.getY() == 16.0) {
+//            if (ivSenna.getX() == 280.0 && ivSenna.getY() == 16.0) { origianl
+//                44 67
+            if ((ivSenna.getX() > 260.0 && ivSenna.getX() < 300.0) && (ivSenna.getY() > 0.0 && ivSenna.getY() < 67.0)) {
                 music.stopSong();
                 window.setScene(sceneWin);
                 ivSenna.setX(280);
