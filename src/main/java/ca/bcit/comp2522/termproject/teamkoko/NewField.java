@@ -117,7 +117,7 @@ public class NewField extends Application {
         Label label1 = new Label("Choose your character");
         Button button1C = new Button("Senna");
         Button button2C = new Button("Chuulsoo");
-        Button button3C = new Button("YoungHee");
+        Button buttonLoad = new Button("Load");
 
 
         button1C.setOnAction(e-> {
@@ -134,8 +134,25 @@ public class NewField extends Application {
         // layout1
 
         VBox layout1 = new VBox(20);
-        layout1.getChildren().addAll(label1, button1C,button2C, button3C);
+        layout1.getChildren().addAll(label1, button1C,button2C, buttonLoad);
         scene1 = new Scene(layout1, 300, 300);
+
+
+        buttonLoad.setOnAction(e-> {
+            try {
+                window.setScene(scene2);
+                timeline.playFromStart();
+                timeline.play();
+                SaveData data = (SaveData) ResourceManager.load("1.save");
+                ivSenna.setX(data.posX);
+                ivSenna.setY(data.posY);
+            } catch (Exception exc) {
+                System.out.println("Couldn't load save data: " + exc.getMessage());
+            }
+        });
+
+
+
 
         // layout win
         VBox layoutWin = new VBox(20);
@@ -150,7 +167,7 @@ public class NewField extends Application {
         Label labelLose = new Label("You Lose😭");
         Button buttonGobackTomainLose = new Button("Go to main menu");
         layoutLose.getChildren().addAll(labelLose, buttonGobackTomainLose);
-        buttonGobackTomain.setOnAction(e->window.setScene(scene1));
+        buttonGobackTomainLose.setOnAction(e->window.setScene(scene1));
         sceneLose = new Scene(layoutLose, 150, 150);
 
 
