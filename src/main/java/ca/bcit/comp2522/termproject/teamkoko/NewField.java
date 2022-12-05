@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -34,22 +33,14 @@ public class NewField extends Application {
 
     ImageView ivBoss = new ImageView();
 
-
-    Image sennaImage = new Image(getClass().getResourceAsStream("/enemy_rear.png"));
+    Image sennaImage = new Image(getClass().getResourceAsStream("/char1.png"));
     ImageView ivSenna = new ImageView(sennaImage);
-    Senna senna = new Senna(40,50,0,0,ivSenna);
+    Senna senna = new Senna(50,60,0,0,ivSenna);
 
     ChulSoo chulSoo = new ChulSoo(40,50,0,0);
 
-
     SoundClipTest music = new SoundClipTest(); //test music
 
-
-
-
-    static Pane root = new Pane();
-
-    //Test
     Stage window;
     Scene scene1, scene2, scene3,sceneWin,sceneLose;
 
@@ -59,7 +50,6 @@ public class NewField extends Application {
 
     List<Image> images = List.of(bossFront, bossRear);
     Iterator<Image> imageIterator;
-
 
     int count;
 
@@ -103,20 +93,15 @@ public class NewField extends Application {
         timeline.setCycleCount(images.size());
         timeline.setOnFinished(event -> timeline.playFromStart());
 
-
         imageIterator = images.iterator();
-//        timeline.playFromStart();
-//        timeline.play();
-
 
 
         window = primaryStage;
 
         // label1, button1
 
-        Label label1 = new Label("Choose your character");
-        Button button1C = new Button("Senna");
-        Button button2C = new Button("Chuulsoo");
+        Label label1 = new Label("Welcome to the Squid Game");
+        Button button1C = new Button("Game Start");
         Button buttonLoad = new Button("Load");
 
 
@@ -126,15 +111,10 @@ public class NewField extends Application {
             timeline.play();
         });
 
-
-
-        button2C.setOnAction(e->window.setScene(scene3));
-
-
         // layout1
 
         VBox layout1 = new VBox(20);
-        layout1.getChildren().addAll(label1, button1C,button2C, buttonLoad);
+        layout1.getChildren().addAll(label1, button1C, buttonLoad);
         scene1 = new Scene(layout1, 300, 300);
 
 
@@ -177,75 +157,31 @@ public class NewField extends Application {
         Button button2 = new Button("Go back to Scene 1");
         button2.setOnAction(e->window.setScene(scene1));
 
-        // layout 2
 
-        // Layout 2 - Senna
+        Label buttonSaveInGame = new Label("Push \"S\" to Save the game!");
+        Label buttonLoadInGame = new Label("Push \"L\" to Load the game!");
+        // layout 2
         ImageView iv = new ImageView("field.png");
         Group root2 = new Group(iv, ivBoss);
         ivSenna.setX(280);
         ivSenna.setY(736);
         root2.getChildren().add(senna);
+        root2.getChildren().add(buttonSaveInGame);
+        root2.getChildren().add(buttonLoadInGame);
 
-        // Layout 2 - Chul Soo
-        ImageView iv2 = new ImageView("field.png");
-        ImageView ivBossForChulsoo = new ImageView();
-        ivBossForChulsoo.setImage(bossFront);
-        Group root3 = new Group(iv2, ivBossForChulsoo);
-        chulSoo.setChulsuX(280);
-        chulSoo.setChulsuY(736);
-        root3.getChildren().add(chulSoo);
-
-        // Layout 2 - YoungHee
-
-
-
+        buttonSaveInGame.setLayoutX(35);
+        buttonSaveInGame.setLayoutY(700);
+        buttonLoadInGame.setLayoutX(35);
+        buttonLoadInGame.setLayoutY(650);
         scene2 = new Scene(root2);
-        //when choosing Chulsu
-        scene3 = new Scene(root3);
-
-
         window.setScene(scene1);
-        window.setTitle("Title Here");
+        window.setTitle("Squid Game");
         window.show();
 
-
-//        SetOnKeyPressed chulsooKey = new SetOnKeyPressed(chulSoo.getIvChulSu());
-
-
-
         scene2.setOnKeyPressed(this::processKeyPress);
-        scene3.setOnKeyPressed(this::processKeyPress);
-
-//        //Display map
-//        ivSenna.setX(280);
-//        ivSenna.setY(736);
-//
-//        root.setPrefSize(640, 800);
-//        root.getChildren().addAll(senna);
-//
-//
-//
-//
-//        ImageView iv = new ImageView("field.png");
-////
-//        Group root2 = new Group(iv);
-//        root2.getChildren().add(senna);
-//
-//
-//        Scene scene = new Scene(root2);
-//
-//        // Register the key listener here
-//        scene.setOnKeyPressed(this::processKeyPress);
-//
-//        primaryStage.setTitle("AlienDirection");
-//        primaryStage.setScene(scene);
-//        primaryStage.hide();
-
 
     }
 
-
-//    private boolean isBlock(final KeyEvent event) {
     /**
      * Modifies the position of the image view when an arrow key is pressed.
      *
@@ -317,11 +253,6 @@ public class NewField extends Application {
         }
     }
 
-
-//        if (event.getCode()){
-//
-//        }
-//    }
 
 
     /**
