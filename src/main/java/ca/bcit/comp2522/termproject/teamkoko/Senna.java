@@ -1,32 +1,32 @@
 package ca.bcit.comp2522.termproject.teamkoko;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.geometry.Rectangle2D;
 
 /**
- * Senna class
+ * Senna class.
+ *
  * @author Jesper Hong
+ * @version 1.0
  */
-public class Senna extends Player{
+public class Senna extends Player {
+    /**
+     * Imageview field.
+     */
     ImageView imageView;
-//    int width = 40;
-//    int height = 50;
-//    int pointX = 0;
-//    int pointY = 0;
 
 
     /**
      * Constructs a character Senna object.
-     * @param width width of this character in pixel
-     * @param height height of this character in pixel
-     * @param pointX X coordinate of offset in Imageview(Starts from left top)
-     * @param pointY Y coordinate of offset in Imageview(Starts from left top)
+     *
+     * @param width     width of this character in pixel
+     * @param height    height of this character in pixel
+     * @param pointX    X coordinate of offset in Imageview(Starts from left top)
+     * @param pointY    Y coordinate of offset in Imageview(Starts from left top)
      * @param imageView Imageview
      */
-    public Senna(int width, int height, int pointX, int pointY, ImageView imageView){
-        super(width,height,pointX,pointY);
+    public Senna(final int width, final int height, final int pointX, final int pointY, final ImageView imageView) {
+        super(width, height, pointX, pointY);
         this.imageView = imageView;
 
 
