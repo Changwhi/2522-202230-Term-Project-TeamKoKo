@@ -27,8 +27,7 @@ public class NewField extends Application {
     /**
      * Distance in pixels that the character moves when a key is pressed.
      */
-    public static final int JUMP = 10;
-    final Random generator = new Random();
+    public static final int JUMP = 4;
     private boolean isPlayingSong = false;
 
     ImageView ivBoss = new ImageView();
@@ -37,7 +36,6 @@ public class NewField extends Application {
     ImageView ivSenna = new ImageView(sennaImage);
     Senna senna = new Senna(50,60,0,0,ivSenna);
 
-    ChulSoo chulSoo = new ChulSoo(40,50,0,0);
 
     SoundClipTest music = new SoundClipTest(); //test music
 
@@ -237,8 +235,7 @@ public class NewField extends Application {
             System.out.println(ivSenna.getX());
             System.out.println(ivSenna.getY());
 
-//            if (ivSenna.getX() == 280.0 && ivSenna.getY() == 16.0) { origianl
-//                44 67
+
             if ((ivSenna.getX() > 260.0 && ivSenna.getX() < 300.0) && (ivSenna.getY() > 0.0 && ivSenna.getY() < 67.0)) {
                 music.stopSong();
                 window.setScene(sceneWin);
