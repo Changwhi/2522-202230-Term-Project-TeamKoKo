@@ -11,9 +11,6 @@ import javafx.scene.image.ImageView;
  * @version 1.0.0
  */
 public class ChulSoo extends Player {
-    private final String name;
-    private final String skill;
-
     /**
      * ImageView field.
      */
@@ -29,6 +26,10 @@ public class ChulSoo extends Player {
      * ImageView for ChulSoo character.
      */
     ImageView ivChulSu;
+
+    private final String name;
+    private final String skill;
+
 
 
     /**

@@ -12,15 +12,25 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- *
+ * TimelineFX Class.
+ * @author Jesper Hong
+ * @version 1.0
  */
 public class TimelineFX extends Application {
-    public static void main(String[] args) {
+    /**
+     * Timeline Driver.
+     * @param args argument
+     */
+    public static void main(final String[] args) {
         launch(args);
     }
 
+    /**
+     * start Method.
+     * @param stage stage
+     * */
     @Override
-    public void start(Stage stage) {
+    public void start(final Stage stage) {
 // Create the Text using text object
         Text text = new Text("Welcome to SquidGame!");
         VBox root = new VBox(text);
