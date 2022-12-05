@@ -285,6 +285,8 @@ public class NewField extends Application {
         } else {
             music.stopSong();
             window.setScene(sceneLose);
+            ivSenna.setX(280);
+            ivSenna.setY(736);
         }
     }
 
