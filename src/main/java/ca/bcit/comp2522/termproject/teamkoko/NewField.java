@@ -1,5 +1,4 @@
 package ca.bcit.comp2522.termproject.teamkoko;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -13,10 +12,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Filed that can move around and play game.
@@ -28,10 +25,14 @@ public class NewField extends Application {
      * Distance in pixels that the character moves when a key is pressed.
      */
     public static final int JUMP = 4;
-    private boolean isPlayingSong = false;
-
+    /**
+     * Store an image.
+     */
     ImageView ivBoss = new ImageView();
 
+    /**
+     * In
+     */
     Image sennaImage = new Image(getClass().getResourceAsStream("/char1.png"));
     ImageView ivSenna = new ImageView(sennaImage);
     Senna senna = new Senna(50,60,0,0,ivSenna);
@@ -40,7 +41,7 @@ public class NewField extends Application {
     SoundClipTest music = new SoundClipTest(); //test music
 
     Stage window;
-    Scene scene1, scene2, scene3,sceneWin,sceneLose;
+    Scene scene1, scene2, sceneWin, sceneLose;
 
 
     Image bossFront = new Image(getClass().getResourceAsStream("/enemy_front.png"));
@@ -48,6 +49,13 @@ public class NewField extends Application {
 
     List<Image> images = List.of(bossFront, bossRear);
     Iterator<Image> imageIterator;
+
+
+    private boolean isPlayingSong = false;
+    /**
+     * Store an image.
+     */
+
 
     int count;
 
@@ -158,6 +166,7 @@ public class NewField extends Application {
 
         Label buttonSaveInGame = new Label("Push \"S\" to Save the game!");
         Label buttonLoadInGame = new Label("Push \"L\" to Load the game!");
+        Label howToPlay = new Label("DEMO version \n Move your character when hearing music,\notherwise, DO NOT MOVE");
         // layout 2
         ImageView iv = new ImageView("field.png");
         Group root2 = new Group(iv, ivBoss);
@@ -166,11 +175,15 @@ public class NewField extends Application {
         root2.getChildren().add(senna);
         root2.getChildren().add(buttonSaveInGame);
         root2.getChildren().add(buttonLoadInGame);
+        root2.getChildren().add(howToPlay);
+
 
         buttonSaveInGame.setLayoutX(35);
         buttonSaveInGame.setLayoutY(700);
         buttonLoadInGame.setLayoutX(35);
         buttonLoadInGame.setLayoutY(650);
+        howToPlay.setLayoutX(35);
+        howToPlay.setLayoutY(600);
         scene2 = new Scene(root2);
         window.setScene(scene1);
         window.setTitle("Squid Game");
