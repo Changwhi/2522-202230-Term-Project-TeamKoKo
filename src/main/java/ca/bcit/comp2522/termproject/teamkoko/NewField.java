@@ -1,4 +1,5 @@
 package ca.bcit.comp2522.termproject.teamkoko;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -12,12 +13,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.util.Iterator;
+
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Filed that can move around and play game.
+ *
  * @author Jesper and Changwhi Oh
  * @version 1.0.0
  */
@@ -32,7 +34,7 @@ public class NewField extends Application {
     ImageView ivBoss = new ImageView();
 
     /**
-     * Count
+     * Count numbers to take turns.
      */
     int count;
 
@@ -47,7 +49,7 @@ public class NewField extends Application {
     /**
      * Instantiate a character.
      */
-    Senna senna = new Senna(50,60,0,0,ivSenna);
+    Senna senna = new Senna(50, 60, 0, 0, ivSenna);
 
     /**
      * Instantiate music object that contains a song.
@@ -88,12 +90,11 @@ public class NewField extends Application {
     List<Image> images = List.of(bossFront, bossRear);
 
 
-
     private boolean isPlayingSong = false;
+
     /**
      * Store an image.
      */
-
 
 
     private void incrementLabel() {
@@ -108,9 +109,6 @@ public class NewField extends Application {
         }
         count++;
     }
-
-
-
 
 
     /**
@@ -133,7 +131,6 @@ public class NewField extends Application {
         timeline.setOnFinished(event -> timeline.playFromStart());
 
 
-
         window = primaryStage;
 
         // label1, button1
@@ -143,7 +140,7 @@ public class NewField extends Application {
         Button buttonLoad = new Button("Load");
 
 
-        button1C.setOnAction(e-> {
+        button1C.setOnAction(e -> {
             window.setScene(scene2);
             timeline.playFromStart();
             timeline.play();
@@ -156,7 +153,7 @@ public class NewField extends Application {
         scene1 = new Scene(layout1, 300, 300);
 
 
-        buttonLoad.setOnAction(e-> {
+        buttonLoad.setOnAction(e -> {
             try {
                 window.setScene(scene2);
                 timeline.playFromStart();
@@ -170,14 +167,12 @@ public class NewField extends Application {
         });
 
 
-
-
         // layout win
         VBox layoutWin = new VBox(20);
         Label labelWin = new Label("You Win🙌");
         Button buttonGobackTomain = new Button("Go to main menu");
         layoutWin.getChildren().addAll(labelWin, buttonGobackTomain);
-        buttonGobackTomain.setOnAction(e->window.setScene(scene1));
+        buttonGobackTomain.setOnAction(e -> window.setScene(scene1));
         sceneWin = new Scene(layoutWin, 150, 150);
 
         // layout lose
@@ -185,15 +180,14 @@ public class NewField extends Application {
         Label labelLose = new Label("You Lose😭");
         Button buttonGobackTomainLose = new Button("Go to main menu");
         layoutLose.getChildren().addAll(labelLose, buttonGobackTomainLose);
-        buttonGobackTomainLose.setOnAction(e->window.setScene(scene1));
+        buttonGobackTomainLose.setOnAction(e -> window.setScene(scene1));
         sceneLose = new Scene(layoutLose, 150, 150);
-
 
 
         // button 2
 
         Button button2 = new Button("Go back to Scene 1");
-        button2.setOnAction(e->window.setScene(scene1));
+        button2.setOnAction(e -> window.setScene(scene1));
 
 
         Label buttonSaveInGame = new Label("Push \"S\" to Save the game!");
@@ -293,7 +287,6 @@ public class NewField extends Application {
             window.setScene(sceneLose);
         }
     }
-
 
 
     /**
