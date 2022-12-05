@@ -232,9 +232,6 @@ public class NewField extends Application {
                 default -> {
                 } // Does nothing if it's not an arrow key
             }
-            System.out.println(ivSenna.getX());
-            System.out.println(ivSenna.getY());
-
 
             if ((ivSenna.getX() > 260.0 && ivSenna.getX() < 300.0) && (ivSenna.getY() > 0.0 && ivSenna.getY() < 67.0)) {
                 music.stopSong();
