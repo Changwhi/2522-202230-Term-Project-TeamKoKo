@@ -34,7 +34,6 @@ public class Field extends Application {
         imageView = new ImageView(alien);
 
         ImageView iv = new ImageView("field.png");
-//        final int player = 1000;
         imageView.setX(280);
         imageView.setY(736);
 
