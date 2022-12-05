@@ -1,6 +1,6 @@
 package ca.bcit.comp2522.termproject.teamkoko;
 
-import javafx.application.Application;
+//import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -10,11 +10,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * Filed that can move around and play game.
+ * Old version game launcher. We do not use it.
  * @author Jesper and Changwhi Oh
  * @version 1.0.0
  */
-public class Field extends Application {
+public class Field {
     /**
      * Distance in pixels that the character moves when a key is pressed.
      */
@@ -74,17 +74,17 @@ public class Field extends Application {
     }
 
 
-    /**
-     * Launches the JavaFX application.
-     *
-     * @param args command line arguments
-     */
-    public static void main(final String[] args) {
-        SoundClipTest music = new SoundClipTest(); //test music
-        music.playSong(); // test music
-
-        launch(args);
-
-    }
+//    /**
+//     * Launches the JavaFX application.
+//     *
+//     * @param args command line arguments
+//     */
+//    public static void main(final String[] args) {
+//        SoundClipTest music = new SoundClipTest(); //test music
+//        music.playSong(); // test music
+//
+//        launch(args);
+//
+//    }
 
 }

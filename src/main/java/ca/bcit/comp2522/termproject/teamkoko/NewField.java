@@ -32,6 +32,11 @@ public class NewField extends Application {
     ImageView ivBoss = new ImageView();
 
     /**
+     * Count
+     */
+    int count;
+
+    /**
      * Generate an image.
      */
     Image sennaImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/char1.png")));
@@ -40,22 +45,48 @@ public class NewField extends Application {
      */
     ImageView ivSenna = new ImageView(sennaImage);
     /**
-     * Instantiate
+     * Instantiate a character.
      */
     Senna senna = new Senna(50,60,0,0,ivSenna);
 
-
-    SoundClipTest music = new SoundClipTest(); //test music
-
+    /**
+     * Instantiate music object that contains a song.
+     */
+    SoundClipTest music = new SoundClipTest();
+    /**
+     * A stage.
+     */
     Stage window;
-    Scene scene1, scene2, sceneWin, sceneLose;
+    /**
+     * Scene that is battle filed.
+     */
+    Scene scene1;
+    /**
+     * Scene that is main menu.
+     */
+    Scene scene2;
+    /**
+     * Scene that is a winning menu.
+     */
+    Scene sceneWin;
+    /**
+     * Scene that is a losing menu.
+     */
+    Scene sceneLose;
 
-
-    Image bossFront = new Image(getClass().getResourceAsStream("/enemy_front.png"));
-    Image bossRear = new Image(getClass().getResourceAsStream("/enemy_rear.png"));
-
+    /**
+     * Boss' front image file.
+     */
+    Image bossFront = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/enemy_front.png")));
+    /**
+     * Boss's rear image file.
+     */
+    Image bossRear = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/enemy_rear.png")));
+    /**
+     * An array of boss' image files.
+     */
     List<Image> images = List.of(bossFront, bossRear);
-    Iterator<Image> imageIterator;
+
 
 
     private boolean isPlayingSong = false;
@@ -64,7 +95,6 @@ public class NewField extends Application {
      */
 
 
-    int count;
 
     private void incrementLabel() {
         if (count % 2 == 0) {
@@ -88,13 +118,9 @@ public class NewField extends Application {
      *
      * @param primaryStage a Stage
      */
-    public void start(Stage primaryStage) {
-
-
+    public void start(final Stage primaryStage) {
         ivBoss.setX(280);
         ivBoss.setY(16);
-
-        imageIterator = images.iterator();
 
         Timeline timeline = new Timeline(
                 new KeyFrame(
@@ -106,7 +132,6 @@ public class NewField extends Application {
         timeline.setCycleCount(images.size());
         timeline.setOnFinished(event -> timeline.playFromStart());
 
-        imageIterator = images.iterator();
 
 
         window = primaryStage;
