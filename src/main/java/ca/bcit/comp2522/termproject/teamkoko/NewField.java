@@ -166,7 +166,7 @@ public class NewField extends Application {
 
         Label buttonSaveInGame = new Label("Push \"S\" to Save the game!");
         Label buttonLoadInGame = new Label("Push \"L\" to Load the game!");
-        Label howToPlay = new Label("DEMO version \n Move your character when hearing music,\notherwise, DO NOT MOVE");
+        Label howToPlay = new Label("DEMO version \nMove your character when hearing music,\notherwise, DO NOT MOVE");
         // layout 2
         ImageView iv = new ImageView("field.png");
         Group root2 = new Group(iv, ivBoss);
@@ -181,7 +181,7 @@ public class NewField extends Application {
         buttonSaveInGame.setLayoutX(35);
         buttonSaveInGame.setLayoutY(700);
         buttonLoadInGame.setLayoutX(35);
-        buttonLoadInGame.setLayoutY(650);
+        buttonLoadInGame.setLayoutY(670);
         howToPlay.setLayoutX(35);
         howToPlay.setLayoutY(600);
         scene2 = new Scene(root2);
