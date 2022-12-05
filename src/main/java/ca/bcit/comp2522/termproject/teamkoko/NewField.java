@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Filed that can move around and play game.
@@ -31,10 +32,16 @@ public class NewField extends Application {
     ImageView ivBoss = new ImageView();
 
     /**
-     * In
+     * Generate an image.
      */
-    Image sennaImage = new Image(getClass().getResourceAsStream("/char1.png"));
+    Image sennaImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/char1.png")));
+    /**
+     * Generate an image container.
+     */
     ImageView ivSenna = new ImageView(sennaImage);
+    /**
+     * Instantiate
+     */
     Senna senna = new Senna(50,60,0,0,ivSenna);
 
 
